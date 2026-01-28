@@ -1,8 +1,12 @@
+/**
+ * Represents a chatbot application.
+ */
 public class Dude {
+    /** The name of the bot. */
     public static final String BOT_NAME = "Dude";
     public static void main(String[] args) {
         String line = "____________________________________________________________";
-        
+
         // Greet the user
         System.out.println(line);
         System.out.println(" Hello! I'm " + BOT_NAME + ".");
