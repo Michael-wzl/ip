@@ -11,7 +11,16 @@ mark 2
 mark 3
 list
 todo
+deadline
+event
 deadline missing by
 event missing from to
+mark
+unmark
+mark abc
+unmark xyz
+mark 999
+unmark 0
 invalid command
+blah
 bye
