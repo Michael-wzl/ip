@@ -67,16 +67,43 @@ ____________________________________________________________
  4.[E][ ] project meeting (from: Mon 2pm to: 4pm)
 ____________________________________________________________
 ____________________________________________________________
- Unknown command: todo
+ Dude says: The description of a todo cannot be empty. Usage: todo <description>
 ____________________________________________________________
 ____________________________________________________________
- Invalid deadline format! Use: deadline <description> /by <time>
+ Dude says: The description of a deadline cannot be empty. Usage: deadline <description> /by <time>
 ____________________________________________________________
 ____________________________________________________________
- Invalid event format! Use: event <description> /from <start> /to <end>
+ Dude says: The description of an event cannot be empty. Usage: event <description> /from <start> /to <end>
 ____________________________________________________________
 ____________________________________________________________
- Unknown command: invalid command
+ Dude says: Missing '/by' in deadline command. Usage: deadline <description> /by <time>
+____________________________________________________________
+____________________________________________________________
+ Dude says: Missing '/from' or '/to' in event command. Usage: event <description> /from <start> /to <end>
+____________________________________________________________
+____________________________________________________________
+ Dude says: Please provide a task number. Usage: mark <task number>
+____________________________________________________________
+____________________________________________________________
+ Dude says: Please provide a task number. Usage: unmark <task number>
+____________________________________________________________
+____________________________________________________________
+ Dude says: 'abc' is not a valid number. Usage: mark <task number>
+____________________________________________________________
+____________________________________________________________
+ Dude says: 'xyz' is not a valid number. Usage: unmark <task number>
+____________________________________________________________
+____________________________________________________________
+ Dude says: Task number 999 is out of range. You have 4 task(s).
+____________________________________________________________
+____________________________________________________________
+ Dude says: Task number 0 is out of range. You have 4 task(s).
+____________________________________________________________
+____________________________________________________________
+ Dude says: Hey, I don't understand what 'invalid command' means. Try: todo, deadline, event, list, mark, unmark, bye.
+____________________________________________________________
+____________________________________________________________
+ Dude says: Hey, I don't understand what 'blah' means. Try: todo, deadline, event, list, mark, unmark, bye.
 ____________________________________________________________
 ____________________________________________________________
  Bye. Hope to see you again soon!
