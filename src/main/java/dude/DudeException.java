@@ -1,3 +1,5 @@
+package dude;
+
 /**
  * Represents exceptions specific to the Dude chatbot.
  */

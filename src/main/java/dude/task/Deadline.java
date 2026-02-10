@@ -1,3 +1,5 @@
+package dude.task;
+
 /**
  * Represents a Deadline task that needs to be done before a specific date/time.
  */

@@ -1,3 +1,5 @@
+package dude.task;
+
 /**
  * Represents an Event task that starts at a specific date/time and ends at a
  * specific date/time.

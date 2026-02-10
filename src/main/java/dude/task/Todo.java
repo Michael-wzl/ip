@@ -1,3 +1,5 @@
+package dude.task;
+
 /**
  * Represents a Todo task without any date/time attached to it.
  */

@@ -1,4 +1,11 @@
+package dude;
+
 import java.util.Scanner;
+
+import dude.task.Deadline;
+import dude.task.Event;
+import dude.task.Task;
+import dude.task.Todo;
 
 /**
  * Represents a chatbot application.
@@ -33,7 +40,7 @@ public class Dude {
             handleEvent(input);
         } else {
             throw new DudeException("Hey, I don't understand what '" + input + "' means. "
-                                            + "Try: todo, deadline, event, list, mark, unmark, bye.");
+                    + "Try: todo, deadline, event, list, mark, unmark, bye.");
         }
     }
 
@@ -56,8 +63,8 @@ public class Dude {
      * @return The validated task index (0-based).
      * @throws DudeException If task number missing/not number/out of range.
      */
-    private static int parseTaskIndex(String input, int commandLength, String commandName)
-            throws DudeException {
+    private static int parseTaskIndex(String input, int commandLength,
+            String commandName) throws DudeException {
         if (input.length() <= commandLength) {
             throw new DudeException("Please provide a task number. Usage: "
                     + commandName + " <task number>");
@@ -71,8 +78,8 @@ public class Dude {
                     + "Usage: " + commandName + " <task number>");
         }
         if (taskIndex < 0 || taskIndex >= taskCount) {
-            throw new DudeException("Task number " + (taskIndex + 1) + " is out of range. " + "You have " + taskCount
-                                            + " task(s).");
+            throw new DudeException("Task number " + (taskIndex + 1) + " is out of range. "
+                    + "You have " + taskCount + " task(s).");
         }
         return taskIndex;
     }
@@ -133,24 +140,27 @@ public class Dude {
     private static void handleDeadline(String input) throws DudeException {
         if (input.length() <= 8 || input.substring(9).trim().isEmpty()) {
             throw new DudeException("The description of a deadline cannot be empty. "
-                                            + "Usage: deadline <description> /by <time>");
+                    + "Usage: deadline <description> /by <time>");
         }
         String content = input.substring(9);
         int byIndex = content.indexOf(" /by ");
         if (byIndex == -1) {
-            throw new DudeException("Missing '/by' in deadline command. " + "Usage: deadline <description> /by <time>");
+            throw new DudeException("Missing '/by' in deadline command. "
+                    + "Usage: deadline <description> /by <time>");
         }
         String description = content.substring(0, byIndex).trim();
         String by = content.substring(byIndex + 5).trim();
         if (description.isEmpty()) {
             throw new DudeException("The description of a deadline cannot be empty. "
-                                            + "Usage: deadline <description> /by <time>");
+                    + "Usage: deadline <description> /by <time>");
         }
         if (by.isEmpty()) {
-            throw new DudeException("The deadline time cannot be empty. " + "Usage: deadline <description> /by <time>");
+            throw new DudeException("The deadline time cannot be empty. "
+                    + "Usage: deadline <description> /by <time>");
         }
         if (taskCount >= MAX_TASKS) {
-            throw new DudeException("Task list is full! You cannot add more than " + MAX_TASKS + " tasks.");
+            throw new DudeException("Task list is full! You cannot add more than "
+                    + MAX_TASKS + " tasks.");
         }
         tasks[taskCount] = new Deadline(description, by);
         taskCount++;
@@ -166,32 +176,33 @@ public class Dude {
     private static void handleEvent(String input) throws DudeException {
         if (input.length() <= 5 || input.substring(6).trim().isEmpty()) {
             throw new DudeException("The description of an event cannot be empty. "
-                                            + "Usage: event <description> /from <start> /to <end>");
+                    + "Usage: event <description> /from <start> /to <end>");
         }
         String content = input.substring(6);
         int fromIndex = content.indexOf(" /from ");
         int toIndex = content.indexOf(" /to ");
         if (fromIndex == -1 || toIndex == -1) {
             throw new DudeException("Missing '/from' or '/to' in event command. "
-                                            + "Usage: event <description> /from <start> /to <end>");
+                    + "Usage: event <description> /from <start> /to <end>");
         }
         String description = content.substring(0, fromIndex).trim();
         String from = content.substring(fromIndex + 7, toIndex).trim();
         String to = content.substring(toIndex + 5).trim();
         if (description.isEmpty()) {
             throw new DudeException("The description of an event cannot be empty. "
-                                            + "Usage: event <description> /from <start> /to <end>");
+                    + "Usage: event <description> /from <start> /to <end>");
         }
         if (from.isEmpty()) {
             throw new DudeException("The start time of an event cannot be empty. "
-                                            + "Usage: event <description> /from <start> /to <end>");
+                    + "Usage: event <description> /from <start> /to <end>");
         }
         if (to.isEmpty()) {
             throw new DudeException("The end time of an event cannot be empty. "
-                                            + "Usage: event <description> /from <start> /to <end>");
+                    + "Usage: event <description> /from <start> /to <end>");
         }
         if (taskCount >= MAX_TASKS) {
-            throw new DudeException("Task list is full! You cannot add more than " + MAX_TASKS + " tasks.");
+            throw new DudeException("Task list is full! You cannot add more than "
+                    + MAX_TASKS + " tasks.");
         }
         tasks[taskCount] = new Event(description, from, to);
         taskCount++;
