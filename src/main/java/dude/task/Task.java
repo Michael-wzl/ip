@@ -50,4 +50,31 @@ public class Task {
     public String toString() {
         return "[" + getStatusIcon() + "] " + description;
     }
+
+    /**
+     * Returns the file-friendly string representation of the task.
+     *
+     * @return The formatted string for saving to file.
+     */
+    public String toFileString() {
+        return (isDone ? "1" : "0") + " | " + description;
+    }
+
+    /**
+     * Returns whether the task is done.
+     *
+     * @return true if the task is done, false otherwise.
+     */
+    public boolean getIsDone() {
+        return isDone;
+    }
+
+    /**
+     * Returns the description of the task.
+     *
+     * @return The description string.
+     */
+    public String getDescription() {
+        return description;
+    }
 }

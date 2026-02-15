@@ -93,6 +93,7 @@ public class Dude {
         tasks[taskIndex].markAsDone();
         System.out.println(" Nice! I've marked this task as done:");
         System.out.println("   " + tasks[taskIndex]);
+        Storage.save(tasks, taskCount);
     }
 
     /**
@@ -106,6 +107,7 @@ public class Dude {
         tasks[taskIndex].markAsNotDone();
         System.out.println(" OK, I've marked this task as not done yet:");
         System.out.println("   " + tasks[taskIndex]);
+        Storage.save(tasks, taskCount);
     }
 
     /**
@@ -125,6 +127,7 @@ public class Dude {
         tasks[taskCount] = new Todo(description);
         taskCount++;
         printAddedTask();
+        Storage.save(tasks, taskCount);
     }
 
     /**
@@ -158,6 +161,7 @@ public class Dude {
         tasks[taskCount] = new Deadline(description, by);
         taskCount++;
         printAddedTask();
+        Storage.save(tasks, taskCount);
     }
 
     /**
@@ -199,6 +203,7 @@ public class Dude {
         tasks[taskCount] = new Event(description, from, to);
         taskCount++;
         printAddedTask();
+        Storage.save(tasks, taskCount);
     }
 
     /**
@@ -212,6 +217,9 @@ public class Dude {
 
     public static void main(String[] args) {
         String line = "____________________________________________________________";
+
+        // Load tasks from file
+        taskCount = Storage.load(tasks);
 
         try (Scanner scanner = new Scanner(System.in)) {
             // Greet the user
