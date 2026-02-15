@@ -71,7 +71,8 @@ public class Storage {
     }
 
     /**
-     * Parses a single line from the data file and returns the corresponding Task.
+     * Parses a single line from the data file and returns the corresponding
+     * Task.
      *
      * @param line The line to parse.
      * @return The parsed Task object.

@@ -20,3 +20,6 @@ text-ui-test/EXPECTED-UNIX.TXT
 .vscode/
 trash/
 eclipse-java-formatter.xml
+
+# JAR files
+*.jar

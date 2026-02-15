@@ -1,12 +1,11 @@
 package dude;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 import dude.task.Deadline;
 import dude.task.Event;
 import dude.task.Task;
 import dude.task.Todo;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Represents a chatbot application.
