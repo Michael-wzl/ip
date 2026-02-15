@@ -93,6 +93,7 @@ public class Dude {
         tasks.get(taskIndex).markAsDone();
         System.out.println(" Nice! I've marked this task as done:");
         System.out.println("   " + tasks.get(taskIndex));
+        Storage.save(tasks);
     }
 
     /**
@@ -106,6 +107,7 @@ public class Dude {
         tasks.get(taskIndex).markAsNotDone();
         System.out.println(" OK, I've marked this task as not done yet:");
         System.out.println("   " + tasks.get(taskIndex));
+        Storage.save(tasks);
     }
 
     /**
@@ -121,6 +123,7 @@ public class Dude {
         String description = input.substring(5).trim();
         tasks.add(new Todo(description));
         printAddedTask();
+        Storage.save(tasks);
     }
 
     /**
@@ -150,6 +153,7 @@ public class Dude {
         }
         tasks.add(new Deadline(description, by));
         printAddedTask();
+        Storage.save(tasks);
     }
 
     /**
@@ -187,11 +191,9 @@ public class Dude {
         }
         tasks.add(new Event(description, from, to));
         printAddedTask();
+        Storage.save(tasks);
     }
 
-    /**
-     * Prints the confirmation message after adding a task.
-     */
     /**
      * Handles the "delete" command.
      *
@@ -204,6 +206,7 @@ public class Dude {
         System.out.println(" Noted. I've removed this task:");
         System.out.println("   " + removedTask);
         System.out.println(" Now you have " + tasks.size() + " tasks in the list.");
+        Storage.save(tasks);
     }
 
     /**
@@ -217,6 +220,9 @@ public class Dude {
 
     public static void main(String[] args) {
         String line = "____________________________________________________________";
+
+        // Load tasks from file
+        Storage.load(tasks);
 
         try (Scanner scanner = new Scanner(System.in)) {
             // Greet the user

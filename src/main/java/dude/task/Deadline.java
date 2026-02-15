@@ -27,4 +27,14 @@ public class Deadline extends Task {
     public String toString() {
         return "[D]" + super.toString() + " (by: " + by + ")";
     }
+
+    /**
+     * Returns the file-friendly string representation of the deadline task.
+     *
+     * @return The formatted string for saving to file.
+     */
+    @Override
+    public String toFileString() {
+        return "D | " + super.toFileString() + " | " + by;
+    }
 }
