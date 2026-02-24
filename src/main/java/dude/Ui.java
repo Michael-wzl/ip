@@ -6,8 +6,8 @@ import java.util.Scanner;
  * Deals with interactions with the user.
  */
 public class Ui {
-    private final Scanner scanner;
     private static final String LINE = "____________________________________________________________";
+    private final Scanner scanner;
 
     /**
      * Creates a new Ui object.

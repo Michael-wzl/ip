@@ -13,7 +13,7 @@ public class Event extends Task {
     protected LocalDate fromDate;
     protected String fromString;
     protected LocalDate toDate;
-    protected String toString;
+    protected String toRawString;
 
     /**
      * Creates a new Event with the given description, start time and end time.
@@ -33,10 +33,10 @@ public class Event extends Task {
         }
         try {
             this.toDate = LocalDate.parse(to);
-            this.toString = to;
+            this.toRawString = to;
         } catch (DateTimeParseException e) {
             this.toDate = null;
-            this.toString = to;
+            this.toRawString = to;
         }
     }
 
@@ -47,10 +47,10 @@ public class Event extends Task {
      */
     @Override
     public String toString() {
-        String fromDisplay = (fromDate != null) ? fromDate.format(DateTimeFormatter.ofPattern("MMM d yyyy"))
-                : fromString;
-        String toDisplay = (toDate != null) ? toDate.format(DateTimeFormatter.ofPattern("MMM d yyyy"))
-                : toString;
+        String fromDisplay = (fromDate != null)
+                ? fromDate.format(DateTimeFormatter.ofPattern("MMM d yyyy")) : fromString;
+        String toDisplay = (toDate != null)
+                ? toDate.format(DateTimeFormatter.ofPattern("MMM d yyyy")) : toRawString;
         return "[E]" + super.toString() + " (from: " + fromDisplay + " to: " + toDisplay + ")";
     }
 
@@ -61,6 +61,6 @@ public class Event extends Task {
      */
     @Override
     public String toFileString() {
-        return "E | " + super.toFileString() + " | " + fromString + " | " + toString;
+        return "E | " + super.toFileString() + " | " + fromString + " | " + toRawString;
     }
 }

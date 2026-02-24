@@ -45,7 +45,7 @@ public class Parser {
             return parseEvent(input);
         } else {
             throw new DudeException("Hey, I don't understand what '" + input + "' means. "
-                    + "Try: todo, deadline, event, list, mark, unmark, delete, bye.");
+                                            + "Try: todo, deadline, event, list, mark, unmark, delete, bye.");
         }
     }
 
@@ -57,7 +57,8 @@ public class Parser {
         try {
             return Integer.parseInt(numberStr) - 1;
         } catch (NumberFormatException e) {
-            throw new DudeException("'" + numberStr + "' is not a valid number. Usage: " + commandName + " <task number>");
+            throw new DudeException("'" + numberStr + "' is not a valid number. Usage: " + commandName
+                                            + " <task number>");
         }
     }
 

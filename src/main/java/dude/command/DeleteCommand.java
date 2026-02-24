@@ -24,7 +24,8 @@ public class DeleteCommand extends Command {
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws DudeException {
         if (index < 0 || index >= tasks.getSize()) {
-            throw new DudeException("Task number " + (index + 1) + " is out of range. You have " + tasks.getSize() + " task(s).");
+            throw new DudeException("Task number " + (index + 1) + " is out of range. You have " + tasks.getSize()
+                                            + " task(s).");
         }
         Task removedTask = tasks.removeTask(index);
         ui.showMessage(" Noted. I've removed this task:");

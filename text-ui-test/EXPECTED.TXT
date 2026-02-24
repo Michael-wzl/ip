@@ -100,10 +100,10 @@ ____________________________________________________________
  Dude says: Task number 0 is out of range. You have 4 task(s).
 ____________________________________________________________
 ____________________________________________________________
- Dude says: Hey, I don't understand what 'invalid command' means. Try: todo, deadline, event, list, mark, unmark, bye.
+ Dude says: Hey, I don't understand what 'invalid command' means. Try: todo, deadline, event, list, mark, unmark, delete, bye.
 ____________________________________________________________
 ____________________________________________________________
- Dude says: Hey, I don't understand what 'blah' means. Try: todo, deadline, event, list, mark, unmark, bye.
+ Dude says: Hey, I don't understand what 'blah' means. Try: todo, deadline, event, list, mark, unmark, delete, bye.
 ____________________________________________________________
 ____________________________________________________________
  Bye. Hope to see you again soon!

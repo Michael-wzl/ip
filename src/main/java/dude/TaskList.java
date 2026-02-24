@@ -4,7 +4,8 @@ import dude.task.Task;
 import java.util.ArrayList;
 
 /**
- * Contains the task list e.g., it has operations to add/delete tasks in the list.
+ * Contains the task list e.g., it has operations to add/delete tasks in the
+ * list.
  */
 public class TaskList {
     private final ArrayList<Task> tasks;
