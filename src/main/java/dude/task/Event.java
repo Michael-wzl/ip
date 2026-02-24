@@ -47,10 +47,9 @@ public class Event extends Task {
      */
     @Override
     public String toString() {
-        String fromDisplay = (fromDate != null)
-                ? fromDate.format(DateTimeFormatter.ofPattern("MMM d yyyy")) : fromString;
-        String toDisplay = (toDate != null)
-                ? toDate.format(DateTimeFormatter.ofPattern("MMM d yyyy")) : toRawString;
+        String fromDisplay = (fromDate != null) ? fromDate.format(DateTimeFormatter.ofPattern("MMM d yyyy"))
+                                        : fromString;
+        String toDisplay = (toDate != null) ? toDate.format(DateTimeFormatter.ofPattern("MMM d yyyy")) : toRawString;
         return "[E]" + super.toString() + " (from: " + fromDisplay + " to: " + toDisplay + ")";
     }
 
