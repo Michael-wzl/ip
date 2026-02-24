@@ -1,11 +1,16 @@
 package dude.task;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 /**
  * Represents a Deadline task that needs to be done before a specific date/time.
  */
 public class Deadline extends Task {
 
-    protected String by;
+    protected LocalDate byDate;
+    protected String byString;
 
     /**
      * Creates a new Deadline with the given description and deadline.
@@ -15,7 +20,13 @@ public class Deadline extends Task {
      */
     public Deadline(String description, String by) {
         super(description);
-        this.by = by;
+        try {
+            this.byDate = LocalDate.parse(by);
+            this.byString = by;
+        } catch (DateTimeParseException e) {
+            this.byDate = null;
+            this.byString = by;
+        }
     }
 
     /**
@@ -25,7 +36,8 @@ public class Deadline extends Task {
      */
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by: " + by + ")";
+        String byDisplay = (byDate != null) ? byDate.format(DateTimeFormatter.ofPattern("MMM d yyyy")) : byString;
+        return "[D]" + super.toString() + " (by: " + byDisplay + ")";
     }
 
     /**
@@ -35,6 +47,6 @@ public class Deadline extends Task {
      */
     @Override
     public String toFileString() {
-        return "D | " + super.toFileString() + " | " + by;
+        return "D | " + super.toFileString() + " | " + byString;
     }
 }

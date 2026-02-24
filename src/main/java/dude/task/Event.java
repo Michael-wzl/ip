@@ -1,13 +1,19 @@
 package dude.task;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 /**
  * Represents an Event task that starts at a specific date/time and ends at a
  * specific date/time.
  */
 public class Event extends Task {
 
-    protected String from;
-    protected String to;
+    protected LocalDate fromDate;
+    protected String fromString;
+    protected LocalDate toDate;
+    protected String toString;
 
     /**
      * Creates a new Event with the given description, start time and end time.
@@ -18,8 +24,20 @@ public class Event extends Task {
      */
     public Event(String description, String from, String to) {
         super(description);
-        this.from = from;
-        this.to = to;
+        try {
+            this.fromDate = LocalDate.parse(from);
+            this.fromString = from;
+        } catch (DateTimeParseException e) {
+            this.fromDate = null;
+            this.fromString = from;
+        }
+        try {
+            this.toDate = LocalDate.parse(to);
+            this.toString = to;
+        } catch (DateTimeParseException e) {
+            this.toDate = null;
+            this.toString = to;
+        }
     }
 
     /**
@@ -29,7 +47,11 @@ public class Event extends Task {
      */
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (from: " + from + " to: " + to + ")";
+        String fromDisplay = (fromDate != null) ? fromDate.format(DateTimeFormatter.ofPattern("MMM d yyyy"))
+                : fromString;
+        String toDisplay = (toDate != null) ? toDate.format(DateTimeFormatter.ofPattern("MMM d yyyy"))
+                : toString;
+        return "[E]" + super.toString() + " (from: " + fromDisplay + " to: " + toDisplay + ")";
     }
 
     /**
@@ -39,6 +61,6 @@ public class Event extends Task {
      */
     @Override
     public String toFileString() {
-        return "E | " + super.toFileString() + " | " + from + " | " + to;
+        return "E | " + super.toFileString() + " | " + fromString + " | " + toString;
     }
 }
