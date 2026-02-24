@@ -12,6 +12,11 @@ import dude.task.Task;
 public class DeleteCommand extends Command {
     private final int index;
 
+    /**
+     * Creates a new DeleteCommand.
+     *
+     * @param index The index of the task to delete.
+     */
     public DeleteCommand(int index) {
         this.index = index;
     }

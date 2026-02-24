@@ -11,6 +11,11 @@ import dude.Ui;
 public class UnmarkCommand extends Command {
     private final int index;
 
+    /**
+     * Creates a new UnmarkCommand.
+     *
+     * @param index The index of the task to unmark.
+     */
     public UnmarkCommand(int index) {
         this.index = index;
     }

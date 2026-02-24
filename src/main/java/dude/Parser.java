@@ -16,6 +16,13 @@ import dude.task.Todo;
  * Deals with making sense of the user command.
  */
 public class Parser {
+    /**
+     * Parses the user input and returns the corresponding command.
+     *
+     * @param fullCommand The full user input string.
+     * @return The command to be executed.
+     * @throws DudeException If the command is invalid or has errors.
+     */
     public static Command parse(String fullCommand) throws DudeException {
         String input = fullCommand.trim();
         if (input.equals("bye")) {

@@ -14,6 +14,11 @@ public class Dude {
     private TaskList tasks;
     private Ui ui;
 
+    /**
+     * Creates a new Dude chatbot application.
+     *
+     * @param filePath The path to the file where tasks are stored.
+     */
     public Dude(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
@@ -25,6 +30,9 @@ public class Dude {
         }
     }
 
+    /**
+     * Runs the chatbot application.
+     */
     public void run() {
         ui.showWelcome();
         boolean isExit = false;
@@ -43,6 +51,11 @@ public class Dude {
         }
     }
 
+    /**
+     * The main method to start the chatbot application.
+     *
+     * @param args The command line arguments.
+     */
     public static void main(String[] args) {
         new Dude("." + File.separator + "data" + File.separator + "dude.txt").run();
     }

@@ -12,6 +12,11 @@ import dude.task.Task;
 public class AddCommand extends Command {
     private final Task task;
 
+    /**
+     * Creates a new AddCommand.
+     *
+     * @param task The task to add.
+     */
     public AddCommand(Task task) {
         this.task = task;
     }
