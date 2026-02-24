@@ -9,9 +9,11 @@
 1. Ensure you have Java 17 or above installed.
 2. Download the latest `dude.jar` from the releases page.
 3. Open a terminal, navigate to the folder containing the jar file, and run:
-   ```
+
+   ```bash
    java -jar dude.jar
    ```
+
 4. Type commands and press Enter to interact with Dude.
 
 ---
@@ -19,6 +21,7 @@
 ## Features
 
 > **Notes about the command format:**
+>
 > - Words in `UPPER_CASE` are parameters to be supplied by the user.
 >   e.g. in `todo DESCRIPTION`, `DESCRIPTION` is a parameter: `todo read book`.
 > - Date parameters accept the `yyyy-MM-dd` format (e.g. `2025-09-30`) and will be displayed in a friendly format (e.g. `Sep 30 2025`). Plain text dates (e.g. `Sunday`) are also accepted.
@@ -30,11 +33,14 @@ Adds a task without any date/time.
 Format: `todo DESCRIPTION`
 
 Example:
-```
+
+```plaintext
 todo read book
 ```
+
 Expected output:
-```
+
+```plaintext
  Got it. I've added this task:
    [T][ ] read book
  Now you have 1 tasks in the list.
@@ -47,12 +53,15 @@ Adds a task that needs to be done before a specific date/time.
 Format: `deadline DESCRIPTION /by DATE`
 
 Examples:
-```
+
+```plaintext
 deadline submit report /by Sunday
 deadline return book /by 2025-12-02
 ```
+
 Expected output:
-```
+
+```plaintext
  Got it. I've added this task:
    [D][ ] submit report (by: Sunday)
  Now you have 2 tasks in the list.
@@ -65,12 +74,15 @@ Adds a task that starts and ends at specific times.
 Format: `event DESCRIPTION /from START /to END`
 
 Examples:
-```
+
+```plaintext
 event project meeting /from Mon 2pm /to 4pm
 event conference /from 2025-10-01 /to 2025-10-03
 ```
+
 Expected output:
-```
+
+```plaintext
  Got it. I've added this task:
    [E][ ] project meeting (from: Mon 2pm to: 4pm)
  Now you have 3 tasks in the list.
@@ -83,7 +95,8 @@ Shows all tasks in the task list.
 Format: `list`
 
 Expected output:
-```
+
+```plaintext
  Here are the tasks in your list:
  1.[T][ ] read book
  2.[D][ ] submit report (by: Sunday)
@@ -97,11 +110,14 @@ Marks the specified task as done.
 Format: `mark TASK_NUMBER`
 
 Example:
-```
+
+```plaintext
 mark 1
 ```
+
 Expected output:
-```
+
+```plaintext
  Nice! I've marked this task as done:
    [T][X] read book
 ```
@@ -113,11 +129,14 @@ Marks the specified task as not done.
 Format: `unmark TASK_NUMBER`
 
 Example:
-```
+
+```plaintext
 unmark 1
 ```
+
 Expected output:
-```
+
+```plaintext
  OK, I've marked this task as not done yet:
    [T][ ] read book
 ```
@@ -129,7 +148,8 @@ Deletes the specified task from the list.
 Format: `delete TASK_NUMBER`
 
 Example:
-```
+
+```plaintext
 delete 2
 ```
 
@@ -140,11 +160,14 @@ Finds tasks whose descriptions contain the given keyword.
 Format: `find KEYWORD`
 
 Example:
-```
+
+```plaintext
 find book
 ```
+
 Expected output:
-```
+
+```plaintext
  Here are the matching tasks in your list:
  1.[T][ ] read book
 ```
@@ -156,7 +179,8 @@ Exits the application.
 Format: `bye`
 
 Expected output:
-```
+
+```plaintext
  Bye. Hope to see you again soon!
 ```
 
