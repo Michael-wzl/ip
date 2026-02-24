@@ -1,8 +1,7 @@
 package dude;
 
-import java.io.File;
-
 import dude.command.Command;
+import java.io.File;
 
 /**
  * Represents a chatbot application.

@@ -72,7 +72,7 @@ public class Parser {
     private static Command parseDeadline(String input) throws DudeException {
         if (input.length() <= 8 || input.substring(9).trim().isEmpty()) {
             throw new DudeException("The description of a deadline cannot be empty."
-                    + " Usage: deadline <description> /by <time>");
+                                            + " Usage: deadline <description> /by <time>");
         }
         String content = input.substring(9);
         int byIndex = content.indexOf(" /by ");
@@ -83,7 +83,7 @@ public class Parser {
         String by = content.substring(byIndex + 5).trim();
         if (description.isEmpty()) {
             throw new DudeException("The description of a deadline cannot be empty."
-                    + " Usage: deadline <description> /by <time>");
+                                            + " Usage: deadline <description> /by <time>");
         }
         if (by.isEmpty()) {
             throw new DudeException("The deadline time cannot be empty. Usage: deadline <description> /by <time>");
@@ -94,29 +94,29 @@ public class Parser {
     private static Command parseEvent(String input) throws DudeException {
         if (input.length() <= 5 || input.substring(6).trim().isEmpty()) {
             throw new DudeException("The description of an event cannot be empty."
-                    + " Usage: event <description> /from <start> /to <end>");
+                                            + " Usage: event <description> /from <start> /to <end>");
         }
         String content = input.substring(6);
         int fromIndex = content.indexOf(" /from ");
         int toIndex = content.indexOf(" /to ");
         if (fromIndex == -1 || toIndex == -1) {
             throw new DudeException("Missing '/from' or '/to' in event command."
-                    + " Usage: event <description> /from <start> /to <end>");
+                                            + " Usage: event <description> /from <start> /to <end>");
         }
         String description = content.substring(0, fromIndex).trim();
         String from = content.substring(fromIndex + 7, toIndex).trim();
         String to = content.substring(toIndex + 5).trim();
         if (description.isEmpty()) {
             throw new DudeException("The description of an event cannot be empty."
-                    + " Usage: event <description> /from <start> /to <end>");
+                                            + " Usage: event <description> /from <start> /to <end>");
         }
         if (from.isEmpty()) {
             throw new DudeException("The start time of an event cannot be empty."
-                    + " Usage: event <description> /from <start> /to <end>");
+                                            + " Usage: event <description> /from <start> /to <end>");
         }
         if (to.isEmpty()) {
             throw new DudeException("The end time of an event cannot be empty."
-                    + " Usage: event <description> /from <start> /to <end>");
+                                            + " Usage: event <description> /from <start> /to <end>");
         }
         return new AddCommand(new Event(description, from, to));
     }

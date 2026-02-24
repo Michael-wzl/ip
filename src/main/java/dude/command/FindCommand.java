@@ -1,12 +1,11 @@
 package dude.command;
 
-import java.util.ArrayList;
-
 import dude.DudeException;
 import dude.Storage;
 import dude.TaskList;
 import dude.Ui;
 import dude.task.Task;
+import java.util.ArrayList;
 
 /**
  * Represents a command to find tasks by a keyword.
