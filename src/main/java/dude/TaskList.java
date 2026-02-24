@@ -1,7 +1,8 @@
 package dude;
 
-import dude.task.Task;
 import java.util.ArrayList;
+
+import dude.task.Task;
 
 /**
  * Contains the task list e.g., it has operations to add/delete tasks in the

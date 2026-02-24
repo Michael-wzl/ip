@@ -1,7 +1,8 @@
 package dude;
 
-import dude.command.Command;
 import java.io.File;
+
+import dude.command.Command;
 
 /**
  * Represents a chatbot application.
@@ -10,9 +11,9 @@ public class Dude {
     /** The name of the bot. */
     public static final String BOT_NAME = "Dude";
 
-    private Storage storage;
-    private TaskList tasks;
-    private Ui ui;
+    private final Storage storage;
+    private final TaskList tasks;
+    private final Ui ui;
 
     /**
      * Creates a new Dude chatbot application.
@@ -22,12 +23,14 @@ public class Dude {
     public Dude(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
+        TaskList loadedTasks;
         try {
-            tasks = new TaskList(storage.load());
+            loadedTasks = new TaskList(storage.load());
         } catch (DudeException e) {
             ui.showLoadingError();
-            tasks = new TaskList();
+            loadedTasks = new TaskList();
         }
+        tasks = loadedTasks;
     }
 
     /**
