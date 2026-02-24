@@ -4,6 +4,7 @@ import dude.command.AddCommand;
 import dude.command.Command;
 import dude.command.DeleteCommand;
 import dude.command.ExitCommand;
+import dude.command.FindCommand;
 import dude.command.ListCommand;
 import dude.command.MarkCommand;
 import dude.command.UnmarkCommand;
@@ -27,6 +28,8 @@ public class Parser {
             return new UnmarkCommand(parseTaskIndex(input, 7, "unmark"));
         } else if (input.equals("delete") || input.startsWith("delete ")) {
             return new DeleteCommand(parseTaskIndex(input, 7, "delete"));
+        } else if (input.startsWith("find ")) {
+            return new FindCommand(input.substring(5).trim());
         } else if (input.equals("todo") || input.startsWith("todo ")) {
             return parseTodo(input);
         } else if (input.equals("deadline") || input.startsWith("deadline ")) {
