@@ -1,40 +1,43 @@
 package dude;
 
+import dude.task.Deadline;
+import dude.task.Event;
+import dude.task.Task;
+import dude.task.Todo;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import dude.task.Deadline;
-import dude.task.Event;
-import dude.task.Task;
-import dude.task.Todo;
-
 /**
  * Handles loading and saving tasks to a file on the hard disk.
  */
 public class Storage {
-    private static final String FILE_PATH = "." + File.separator + "data" + File.separator + "dude.txt";
+    private final String filePath;
+
+    public Storage(String filePath) {
+        this.filePath = filePath;
+    }
 
     /**
      * Saves the current tasks to the file.
      *
      * @param tasks The list of tasks to save.
      */
-    public static void save(ArrayList<Task> tasks) {
+    public void save(ArrayList<Task> tasks) {
         try {
-            File file = new File(FILE_PATH);
+            File file = new File(filePath);
             File parentDir = file.getParentFile();
             if (parentDir != null && !parentDir.exists()) {
                 parentDir.mkdirs();
             }
 
-            FileWriter writer = new FileWriter(file);
-            for (int i = 0; i < tasks.size(); i++) {
-                writer.write(tasks.get(i).toFileString() + System.lineSeparator());
+            try (FileWriter writer = new FileWriter(file)) {
+                for (int i = 0; i < tasks.size(); i++) {
+                    writer.write(tasks.get(i).toFileString() + System.lineSeparator());
+                }
             }
-            writer.close();
         } catch (IOException e) {
             System.out.println(" Warning: Unable to save tasks to file: " + e.getMessage());
         }
@@ -43,31 +46,33 @@ public class Storage {
     /**
      * Loads tasks from the file into the given list.
      *
-     * @param tasks The list to load tasks into.
+     * @return The list of loaded tasks.
      */
-    public static void load(ArrayList<Task> tasks) {
-        File file = new File(FILE_PATH);
+    public ArrayList<Task> load() throws DudeException {
+        ArrayList<Task> tasks = new ArrayList<>();
+        File file = new File(filePath);
         if (!file.exists()) {
-            return;
+            return tasks;
         }
         try {
-            Scanner scanner = new Scanner(file);
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine().trim();
-                if (line.isEmpty()) {
-                    continue;
-                }
-                try {
-                    Task task = parseLine(line);
-                    tasks.add(task);
-                } catch (DudeException e) {
-                    System.out.println(" Warning: Skipping corrupted line in data file: " + line);
+            try (Scanner scanner = new Scanner(file)) {
+                while (scanner.hasNextLine()) {
+                    String line = scanner.nextLine().trim();
+                    if (line.isEmpty()) {
+                        continue;
+                    }
+                    try {
+                        Task task = parseLine(line);
+                        tasks.add(task);
+                    } catch (DudeException e) {
+                        System.out.println(" Warning: Skipping corrupted line in data file: " + line);
+                    }
                 }
             }
-            scanner.close();
         } catch (IOException e) {
-            System.out.println(" Warning: Unable to load tasks from file: " + e.getMessage());
+            throw new DudeException("Unable to load tasks from file: " + e.getMessage());
         }
+        return tasks;
     }
 
     /**

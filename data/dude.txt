@@ -1,0 +1,2 @@
+T | 0 | read book
+E | 0 | Michael attend CS2113 lecture | Friday 20 Feb 2026 4pm | Friday 20 Feb 2026 6pm
